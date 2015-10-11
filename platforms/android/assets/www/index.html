@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="moviereviewer">
+    <head>
+        <title>Movie Reviewer</title>
+        <link rel="stylesheet" type="text/css" href="lib/jquery-mobile.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/angular.min.js"></script>
+        <script type="text/javascript" src="lib/lodash.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-mobile.min.js"></script>
+    </head>
+    <body>
+        <div data-role="page" id="home" data-theme="b" data-theme-content="b">
+            <div data-role="header" data-position="fixed">
+                <h1>Movies</h1>
+            </div>
+            <div data-role="content" class="body-content" fetch-movies>                
+                <ul data-role="listview" data-inset="true">
+                    <center><li class="movie-list" ng-repeat="movie in movies">
+                        <a href="#movie-details" ng-click="showMovie( movie )" data-transition="slide">
+                            {{ movie.title }}<br /><img ng-src="{{ movie.image_url }}" />
+                        </a>
+                    </li></center>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h1>by: Webnified</h1>
+            </div>
+        </div>
+
+        <div data-role="page" id="movie-details" data-theme="b" data-theme-content="b">
+            <div data-role="header" data-position="fixed">
+            <a href="#home" data-rel="back" data-icon="arrow-l" data-transition="slide">Back</a>
+                <h1>Movie Details</h1>
+            </div>
+            <div data-role="content" class="body-content" movie-show>
+                <section class="ui-content">
+                    <b>Movie: </b>{{ movieDetail.title }}
+                    <center><img ng-src="{{ movieDetail.image_url }}"></center>
+                    <b>Description: </b> {{ movieDetail.description }}
+                    <br /><br />
+                    <b>Director: </b>{{ movieDetail.director }}
+                </section>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h1>By: Webnified</h1>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/app.js"></script>
+    </body>
+</html>
